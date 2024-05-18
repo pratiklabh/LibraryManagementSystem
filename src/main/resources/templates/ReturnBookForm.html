@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Return Book</title>
+
+</head>
+<body>
+	<th:block th:insert="~{Header.html}"></th:block>
+	
+	<div class="container-fluid">
+
+		<div class="card">
+
+			<div class="card-header bg-primary text-center text-white">
+				<h5>Return Book Details</h5>
+			</div>
+
+			<div class="card-body">
+				<form action="/returnBook" method="post">
+					
+					<div class="row p-2">
+						<div class="col-4">User Name</div>
+						<div class="col-6">
+							<select name="username" class="form-control" required>
+    <option value=""> ---- Select User Name ---- </option>
+    <option th:each="username : ${uniqueUsernames}" th:value="${username}" th:text="${username}"></option>
+</select>
+
+							
+							
+						</div>
+					</div>
+					
+					<div class="row p-2">
+						<div class="col-4">Book Name</div>
+						<div class="col-6">
+							<select name="bookname" class="form-control" required>
+								<option value="">---- Select Book Name ---- </option>
+								<option th:each="ab:${abList}" th:value="${ab.bookname}">[[${ab.bookname}]]</option>
+							</select>
+						</div>
+					</div>
+
+					
+					<div class="row p-2">
+						<div class="col-4">Returned Date</div>
+						<div class="col-6">
+							<input type="date" name="returndate" class="form-control" required>
+						</div>
+					</div>
+										
+					<div class="row p-2">
+						<div class="col-4"></div>
+						<div class="col-6">
+							<input type="submit" value="Return Book" class="btn btn-success">
+						</div>
+					</div>
+					<p style="color:red; text-align:center; font-size:20px">[[${error}]]</p>
+					<p style="color:green; text-align:center; font-size:20px">[[${message}]]</p>
+				</form>
+
+			</div>
+
+			<div class="card-footer  bg-warning text-center ">LibraryMS@2024</div>
+
+
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>

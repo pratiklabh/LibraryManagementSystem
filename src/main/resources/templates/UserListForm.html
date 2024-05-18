@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>User List Form</title>
+
+</head>
+<body>
+	<th:block th:insert="~{Header.html}"></th:block>
+	
+	<div class="container-fluid">
+
+		<div class="card">
+
+			<div class="card-header bg-primary text-center text-white">
+				<h5>User List Details</h5>
+			</div>
+
+			<div class="card-body">
+				
+				<table class="table">
+					<thead>
+						
+						<tr>
+							<th>Name</th>
+							<th>Email</th>
+							<th>UserName</th>
+							<th>Phone</th>
+							<th>Books Borrowed</th>
+							<th>Actions</th>
+						</tr>
+					
+					</thead>
+					
+					<tbody>
+					
+						<tr th:each = "u:${uList}">
+							<td> [[${u.name}]] </td>
+							<td> [[${u.email}]] </td>
+							<td> [[${u.username}]] </td>
+							<td> [[${u.phone}]] </td>
+							<td>  
+								<a th:href="@{/user/bookhistory(id=${u.id})}">
+									<input type="submit" class="btn btn-primary" value="View Books History">
+								</a>
+							</td>
+							<td>
+								<a th:href="@{/user/edit(id=${u.id})}">
+									<input type="submit" class="btn btn-success" value="Edit">
+								</a>
+								<a th:href="@{/user/delete(id=${u.id})}">
+									<input type="submit" class="btn btn-danger" value="Delete">
+								</a>
+							</td>
+							
+						</tr>
+					
+					</tbody>
+				
+				
+				</table>
+				
+				
+			</div>
+
+			<div class="card-footer  bg-warning text-center ">LibraryMS@2024</div>
+
+
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>

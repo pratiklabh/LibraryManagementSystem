@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Book Edit Form</title>
+
+</head>
+<body>
+	<th:block th:insert="~{Header.html}"></th:block>
+	
+	<div class="container-fluid">
+
+		<div class="card">
+
+			<div class="card-header bg-primary text-center text-white">
+				<h5>Update Book Details</h5>
+			</div>
+
+			<div class="card-body">
+				<form action="/book/update" method="post" th:object="${bModel}">
+					<div class="row p-2">
+						<div class="col-4">Book Name</div>
+						<div class="col-6">
+							<input type="text" th:field="*{name}" class="form-control" required>
+						</div>
+					</div>
+
+					
+
+					<div class="row p-2">
+						<div class="col-4">Book Author</div>
+						<div class="col-6">
+							<input type="text" th:field="*{author}" class="form-control" required>
+						</div>
+					</div>
+
+					
+										
+					<div class="row p-2">
+						<div class="col-4"></div>
+						<div class="col-6">
+							<input type="submit" value="Update Book" class="btn btn-success">
+						</div>
+					</div>
+					
+					<p style="color:red; text-align:center; font-size:20px">[[${error}]]</p>
+					<p style="color:green; text-align:center; font-size:20px">[[${message}]]</p>
+				
+					<input type = "hidden" th:field = "*{id}" >
+				
+				</form>
+
+			</div>
+
+			<div class="card-footer  bg-warning text-center ">LibraryMS@2024</div>
+
+
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>

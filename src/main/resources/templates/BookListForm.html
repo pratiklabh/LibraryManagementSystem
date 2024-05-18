@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Book List Form</title>
+
+</head>
+<body>
+	<th:block th:insert="~{Header.html}"></th:block>
+	
+	<div class="container-fluid">
+
+		<div class="card">
+
+			<div class="card-header bg-primary text-center text-white">
+				<h5>Book List Details</h5>
+			</div>
+
+			<div class="card-body">
+				
+				<table class="table">
+					<thead>
+						
+						<tr>
+							<th>Name</th>
+							<th>Author</th>
+							<th>Is this Book Borrowed?</th>
+							<th>Borrowed By</th>
+							<th>Actions</th>
+						</tr>
+					
+					</thead>
+					
+					<tbody>
+					
+						<tr th:each = "b:${bList}">
+							<td> [[${b.name}]] </td>
+							<td> [[${b.author}]] </td>
+							<td> [[${b.isBorrowed == false ? 'No' : b.isBorrowed}]] </td>
+							<td> [[${b.borrowedBy == null ? 'None' : b.borrowedBy}]] </td>
+							
+							
+							
+							
+							<td>
+								<a th:href="@{/book/edit(id=${b.id})}">
+									<input type="submit" class="btn btn-success" value="Edit">
+								</a>
+								<a th:href="@{/book/delete(id=${b.id})}">
+									<input type="submit" class="btn btn-danger" value="Delete">
+								</a>
+							</td>
+							
+						</tr>
+					
+					</tbody>
+				
+				
+				</table>
+				
+				
+			</div>
+
+			<div class="card-footer  bg-warning text-center ">LibraryMS@2024</div>
+
+
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>

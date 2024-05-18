@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Assigned Book History</title>
+
+</head>
+<body>
+	<th:block th:insert="~{Header.html}"></th:block>
+	
+	<div class="container-fluid">
+
+		<div class="card">
+
+			<div class="card-header bg-primary text-center text-white">
+				<h5>Assigned Book History</h5>
+			</div>
+
+			<div class="card-body">
+				
+				<table class="table">
+					<thead>
+						
+						<tr>
+							<th>User Name</th>
+							<th>Book Name</th>
+							<th>Assigned Date</th>
+							<th>Returned Date</th>
+							<th>Actions</th>
+						</tr>
+					
+					</thead>
+					
+					<tbody>
+					
+						<tr th:each = "ab:${abList}">
+							<td> [[${ab.username}]] </td>
+							<td> [[${ab.bookname}]] </td>
+							<td> [[${ab.assigneddate}]] </td>
+							<td> [[${ab.returndate}]] </td>
+							
+							<td>
+								
+								<a th:href="@{/assignedbook/delete(id=${ab.id})}">
+									<input type="submit" class="btn btn-danger" value="Delete">
+								</a>
+							</td>
+							
+						</tr>
+					
+					</tbody>
+				
+				
+				</table>
+				
+				
+			</div>
+
+			<div class="card-footer  bg-warning text-center ">LibraryMS@2024</div>
+
+
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>
